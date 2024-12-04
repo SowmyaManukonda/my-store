@@ -1,138 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>space makers</title>
-    <style>
-        * {
-            margin: 0px;
-        }
-
-        .header {
-            background-color: grey;
-            color: rgb(176, 35, 58);
-            display: flex;
-            justify-content: space-between;
-            text-align: center;
-        }
-
-        li {
-            display: inline-block;
-        }
-
-        a {
-            text-decoration: none;
-            color: yellow;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .row2 {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .row2.box {
-            border: solid 1px silver;
-            margin: 50px;
-            padding: 10 px;
-        }
-
-        .row3 {
-            display: flex;
-            justify-content: center;
-            background-color: aqua;
-            height: 600px;
-            padding: 100px;
-            align-items: center;
-        }
-
-        .row3 .box {
-            width: 500px;
-            margin: 10px;
-            background: white;
-            height: 300px;
-        }
-
-        .footer {
-            background-color: black;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        img {
-            width: 300px;
-        }
-    </style>
+    <title>Cafes in Hyderabad</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div>
-        <div class="header">
-            <div>
-                <h1>space</h1>
-            </div>
-            <div>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li> <a href="#">About</a></li>
-                    <li></li><a href="#">Contact</a></li>
-                    <li></li><a href="#">Services</a></li>
-                </ul>
-            </div>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <h1>Explore Cafes in Hyderabad</h1>
+    </header>
+
+    <!-- Cafe List -->
+    <div class="cafe-list">
+        <div class="cafe-card">
+            <img src="cafe1.jpg" alt="Cafe A">
+            <h2><a href="cafe1.html">Cafe A</a></h2>
+            <p>Rating: ★★★★☆ (4/5)</p>
+            <p>Description: Cozy cafe with a wide variety of coffee and snacks.</p>
         </div>
-    </div>
-    <div class="row2">
-        <div class="box">
-            <img src="assets/image/cafee.jpg" height="300" width="400" />
-            <h3>product 1</h3>
-            <h4>This is the description of the product</h4>
-            Price:$25 <button>Add to Cart</button>
+
+        <div class="cafe-card">
+            <img src="cafe2.jpg" alt="Cafe B">
+            <h2><a href="cafe2.html">Cafe B</a></h2>
+            <p>Rating: ★★★☆☆ (3/5)</p>
+            <p>Description: Great for work with free Wi-Fi and delicious pastries.</p>
         </div>
-        <div class="box">
-            <img src="assets/image/oiii.jpg" height="300" width="400" />
-            <h3>product 2</h3>
-            <h4>This is the description of the product</h4>
-            Price:$25 <button>Add to Cart</button>
-        </div>
-        <div class="box">
-            <img src="assets/image/heyyy.jpg" height="300" width="400" />
-            <h3>product 3</h3>
-            <h4>This is the description of the product</h4>
-            Price:$25 <button>Add to Cart</button>
-        </div>
-    </div>
-    <div class="row3">
-        <img src="assets/image/hello.jpg" height="300" width="400" />
-        <div class="box">
-            <h1><b>Le Cafe</b></h1>
-            <br><br>
-            <h4>
-                <pre>
-              <b>Details</b>
-    CUISINES :
-        Italian, Cafe, Fast food
-    Special Diets:
-        Vegetarian friendly, Vegan options
-    Meals:
-        Breakfast, Lunch, Brunch
-    FEATURES:
-        Seating, Wheelchair Accessible, Table Service
-                </pre>
-            </h4>
+
+        <div class="cafe-card">
+            <img src="cafe3.jpg" alt="Cafe C">
+            <h2><a href="cafe3.html">Cafe C</a></h2>
+            <p>Rating: ★★★★★ (5/5)</p>
+            <p>Description: Premium cafe with a unique blend of teas and gourmet food.</p>
         </div>
     </div>
 
-    <div class="footer">
-        <footer>@Copyright 2024. All rights reserved.</footer>
-    </div>
-    </div>
-
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cafes in Hyderabad. All rights reserved.</p>
+    </footer>
 </body>
-
 </html>
