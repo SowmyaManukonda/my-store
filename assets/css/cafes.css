@@ -1,0 +1,14 @@
+/* For the cafe cards on the homepage */
+.cafe-card img {
+    width: 100%;     /* Full width of the container */
+    height: 200px;   /* Set fixed height */
+    object-fit: cover;
+}
+
+/* For the image in the individual cafe page */
+.cafe-info img {
+    width: 100%;     /* Full width of the container */
+    height: auto;    /* Maintain aspect ratio */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
