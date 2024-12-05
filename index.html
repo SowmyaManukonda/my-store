@@ -4,51 +4,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafes in Hyderabad</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <title>Le Cafe - Your Perfect Spot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-left: 20px;
+        }
+
+        .header ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .header ul li {
+            margin: 0 15px;
+        }
+
+        .header ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .header ul li a:hover {
+            color: #e74c3c;
+        }
+
+        .filter {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .filter button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .filter button:hover {
+            background-color: #c0392b;
+        }
+
+        .row2 {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1200px;
+        }
+
+        .row2 .box {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+            margin: 15px;
+            padding: 15px;
+            transition: box-shadow 0.3s;
+            width: 30%;
+            min-width: 250px;
+        }
+
+        .row2 .box:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .row2 .box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .row2 .box h3 {
+            margin: 15px 0;
+            color: #2c3e50;
+        }
+
+        .row2 .box h4 {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .row2 .box button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .row2 .box button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <div>
-            <h1>Explore Cafes in Hyderabad</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="header">
+        <h1>Le Cafe</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
 
-    <!-- Cafe List: Flexbox Layout for side-by-side cards -->
-    <div class="cafe-list">
-        <div class="cafe-card">
-            <img src="assets/image/cafe1.jpg" alt="Cafe A">
-            <h2><a href="cafe1.html">Cafe A</a></h2>
-            <p>Rating: ★★★★☆ (4/5)</p>
-            <p>Description: Cozy cafe with a wide variety of coffee and snacks.</p>
+    <!-- Filter Section -->
+    <div class="filter">
+        <button onclick="filterMenu('all')">All</button>
+        <button onclick="filterMenu('drinks')">Drinks</button>
+        <button onclick="filterMenu('desserts')">Desserts</button>
+        <button onclick="filterMenu('snacks')">Snacks</button>
+    </div>
+
+    <!-- Menu Section -->
+    <div class="row2" id="menu">
+        <div class="box drinks">
+            <img src="assets/image/latte.jpg" alt="Latte">
+            <h3>Latte Art</h3>
+            <h4>A perfect blend of espresso and steamed milk.</h4>
+            <button onclick="openModal('latte')">View Details</button>
         </div>
 
-        <div class="cafe-card">
-            <img src="assets/image/cafe2.jpg" alt="Cafe B">
-            <h2><a href="cafe2.html">Cafe B</a></h2>
-            <p>Rating: ★★★☆☆ (3/5)</p>
-            <p>Description: Great for work with free Wi-Fi and delicious pastries.</p>
+        <div class="box desserts">
+            <img src="assets/image/blueberry-muffin.jpg" alt="Blueberry Muffin">
+            <h3>Blueberry Muffin</h3>
+            <h4>Freshly baked with juicy blueberries.</h4>
+            <button onclick="openModal('blueberry')">View Details</button>
         </div>
 
-        <div class="cafe-card">
-            <img src="assets/image/cafe3.jpg" alt="Cafe C">
-            <h2><a href="cafe3.html">Cafe C</a></h2>
-            <p>Rating: ★★★★★ (5/5)</p>
-            <p>Description: Premium cafe with a unique blend of teas and gourmet food.</p>
+        <div class="box snacks">
+            <img src="assets/image/caprese-sandwich.jpg" alt="Caprese Sandwich">
+            <h3>Caprese Sandwich</h3>
+            <h4>Delicious mozzarella, tomatoes, and basil.</h4>
+            <button onclick="openModal('caprese')">View Details</button>
+        </div>
+
+        <div class="box drinks">
+            <img src="assets/image/espresso.jpg" alt="Espresso">
+            <h3>Espresso Shot</h3>
+            <h4>Bold, strong, and rich in flavor.</h4>
+            <button onclick="openModal('espresso')">View Details</button>
+        </div>
+
+        <div class="box desserts">
+            <img src="assets/image/cheesecake.jpg" alt="Cheesecake">
+            <h3>Cheesecake Slice</h3>
+            <h4>Velvety smooth and creamy.</h4>
+            <button onclick="openModal('cheesecake')">View Details</button>
+        </div>
+
+        <div class="box snacks">
+            <img src="assets/image/croissant.jpg" alt="Croissant">
+            <h3>Butter Croissant</h3>
+            <h4>Flaky and buttery, baked fresh daily.</h4>
+            <button onclick="openModal('croissant')">View Details</button>
+        </div>
+    </div>
+
+    <!-- Modal for Latte Art -->
+    <div id="latte" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('latte')">&times;</span>
+            <h2>Latte Art</h2>
+            <p><b>Description:</b> A perfect blend of espresso and steamed milk, beautifully decorated with intricate patterns of milk foam.</p>
+            <p><b>Price:</b> $4.50</p>
+            <p><b>Available Sizes:</b> Small, Medium, Large</p>
+        </div>
+    </div>
+
+    <!-- Modal for Blueberry Muffin -->
+    <div id="blueberry" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('blueberry')">&times;</span>
+            <h2>Blueberry Muffin</h2>
+            <p><b>Description:</b> Freshly baked, soft muffin loaded with juicy blueberries, perfect for breakfast or a quick snack.</p>
+            <p><b>Price:</b> $3.00</p>
+        </div>
+    </div>
+
+    <!-- Modal for Caprese Sandwich -->
+    <div id="caprese" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('caprese')">&times;</span>
+            <h2>Caprese Sandwich</h2>
+            <p><b>Description:</b> A sandwich filled with fresh mozzarella, tomatoes, basil, and a drizzle of balsamic vinegar on soft Italian bread.</p>
+            <p><b>Price:</b> $5.00</p>
+        </div>
+    </div>
+
+    <!-- Modal for Espresso Shot -->
+    <div id="espresso" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('espresso')">&times;</span>
+            <h2>Espresso Shot</h2>
+            <p><b>Description:</b> A shot of strong, bold coffee to get your day started. A perfect pick-me-up for coffee lovers.</p>
+            <p><b>Price:</b> $2.00</p>
+        </div>
+    </div>
+
+    <!-- Modal for Cheesecake -->
+    <div id="cheesecake" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('cheesecake')">&times;</span>
+            <h2>Cheesecake Slice</h2>
+            <p><b>Description:</b> A creamy, rich cheesecake topped with a hint of berry compote. A perfect dessert.</p>
+            <p><b>Price:</b> $4.00</p>
+        </div>
+    </div>
+
+    <!-- Modal for Croissant -->
+    <div id="croissant" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('croissant')">&times;</span>
+            <h2>Butter Croissant</h2>
+            <p><b>Description:</b> Flaky and buttery pastry, baked fresh daily, perfect for pairing with coffee or tea.</p>
+            <p><b>Price:</b> $2.50</p>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Cafes in Hyderabad. All rights reserved.</p>
-    </footer>
+    <div class="footer">
+        <p>&copy; 2024 Le Cafe. All rights reserved.</p>
+        <p>
+            Follow us:
+            <a href="https://www.facebook.com" target="_blank">Facebook</a> |
+            <a href="https://www.instagram.com" target="_blank">Instagram</a> |
+            <a href="https://www.twitter.com" target="_blank">Twitter</a>
+        </p>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.box');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
