@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - LeCafe</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo h1 {
+      font-size: 24px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #f5a623;
+    }
+
+    .checkout {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .checkout h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .checkout-form {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .checkout-form input, .checkout-form select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .checkout-form button {
+      padding: 14px 25px;
+      background-color: #f5a623;
+      color: white;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .checkout-form button:hover {
+      background-color: #e49e1d;
+    }
+
+    .order-summary {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .order-summary h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .order-summary ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .order-summary li {
+      margin-bottom: 10px;
+    }
+
+    .order-summary .total {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      color: #f5a623;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .checkout-form, .order-summary {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <h1>LeCafe</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order Online</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="checkout">
+    <h2>Checkout</h2>
+
+    <div class="order-summary">
+      <h3>Your Order</h3>
+      <ul id="order-items">
+        <!-- Order items will be dynamically inserted here -->
+      </ul>
+      <p class="total">Total: $<span id="total-price">0.00</span></p>
+    </div>
+
+    <div class="checkout-form">
+      <h3>Billing Information</h3>
+      <form id="checkout-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+        <div class="error-message" id="name-error"></div>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+        <div class="error-message" id="email-error"></div>
+
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" name="address" required placeholder="Enter your shipping address">
+        <div class="error-message" id="address-error"></div>
+
+        <label for="payment-method">Payment Method</label>
+        <select id="payment-method" name="payment-method" required>
+          <option value="credit-card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="bank-transfer">Bank Transfer</option>
+        </select>
+
+        <button type="submit">Complete Order</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 LeCafe. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Get cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderItemsContainer = document.getElementById('order-items');
+    const totalPriceElement = document.getElementById('total-price');
+
+    // Display order summary
+    function displayOrderSummary() {
+      if (cart.length === 0) {
+        orderItemsContainer.innerHTML = '<p>Your cart is empty. Please add items to your cart before proceeding.</p>';
+      } else {
+        orderItemsContainer.innerHTML = cart.map(item => `
+          <li>${item.name} - $${item.price.toFixed(2)}</li>
+        `).join('');
+      }
+
+      // Update total price
+      const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+      totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+
+    // Handle form validation and submission
+    document.getElementById('checkout-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Clear previous error messages
+      const errorElements = document.querySelectorAll('.error-message');
+      errorElements.forEach(element => element.textContent = '');
+
+      // Retrieve user input
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+      const paymentMethod = document.getElementById('payment-method').value;
+
+      let isValid = true;
+
+      // Validate fields
+      if (!name) {
+        document.getElementById('name-error').textContent = 'Full name is required.';
+        isValid = false;
+      }
+
+      if (!email) {
+        document.getElementById('email-error').textContent = 'Email address is required.';
+        isValid = false;
+      }
+
+      if (!address) {
+        document.getElementById('address-error').textContent = 'Shipping address is required.';
+        isValid = false;
+      }
+
+      if (cart.length === 0) {
+        alert('Your cart is empty. Please add items to your cart before proceeding.');
+        isValid = false;
+      }
+
+      // If all validations pass, proceed with order confirmation
+      if (isValid) {
+        alert(`Order Confirmed!\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nPayment Method: ${paymentMethod}\nTotal: $${totalPriceElement.textContent}`);
+
+        // Clear cart and update localStorage
+        localStorage.removeItem('cart');
+        cart = [];
+        displayOrderSummary();
+
+        // Optionally, redirect to a confirmation page
+        // window.location.href = "order-confirmation.html";
+      }
+    });
+
+    // Call displayOrderSummary() to show the current order on page load
+    displayOrderSummary();
+  </script>
+
+</body>
+</html>

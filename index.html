@@ -1,350 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Cafe - Your Perfect Spot</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeCafe Menu</title>
+  <meta name="description" content="LeCafe offers premium coffee, beverages, snacks, and pastries. Visit us for the best cafe experience.">
+  <meta name="keywords" content="coffee, cafe, beverages, pastries, snacks, fresh coffee, menu, online cafe">
+  <meta name="author" content="LeCafe">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fafafa;
+      color: #333;
+    }
 
-        .header {
-            background-color: #2c3e50;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        .header h1 {
-            font-size: 2rem;
-            margin-left: 20px;
-        }
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
 
-        .header ul {
-            list-style: none;
-            display: flex;
-        }
+    header .logo img {
+      max-width: 50px;
+      height: auto;
+      margin-right: 10px;
+    }
 
-        .header ul li {
-            margin: 0 15px;
-        }
+    header .logo h1 {
+      font-size: 24px;
+    }
 
-        .header ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
 
-        .header ul li a:hover {
-            color: #e74c3c;
-        }
+    nav ul li {
+      margin-left: 20px;
+    }
 
-        .filter {
-            text-align: center;
-            margin: 20px 0;
-        }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
 
-        .filter button {
-            background-color: #e74c3c;
-            color: white;
-            padding: 10px 15px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
+    nav ul li a:hover {
+      color: #f5a623;
+    }
 
-        .filter button:hover {
-            background-color: #c0392b;
-        }
+    /* Cart count badge */
+    .cart-badge {
+      position: relative;
+      padding: 3px 8px;
+      background-color: #f5a623;
+      border-radius: 50%;
+      font-size: 14px;
+      color: white;
+      top: -10px;
+      right: -10px;
+    }
 
-        .row2 {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 1200px;
-        }
+    section.menu {
+      padding: 50px 20px;
+      text-align: center;
+    }
 
-        .row2 .box {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-            text-align: center;
-            margin: 15px;
-            padding: 15px;
-            transition: box-shadow 0.3s;
-            width: 30%;
-            min-width: 250px;
-        }
+    section.menu h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #333;
+    }
 
-        .row2 .box:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+    .menu-category {
+      margin-bottom: 50px;
+    }
 
-        .row2 .box img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 1px solid #ddd;
-        }
+    .menu-category h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #f5a623;
+    }
 
-        .row2 .box h3 {
-            margin: 15px 0;
-            color: #2c3e50;
-        }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      margin: 15px 0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .row2 .box h4 {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            margin-bottom: 15px;
-        }
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
 
-        .row2 .box button {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 3px;
-            transition: background-color 0.3s;
-        }
+    .menu-item img {
+      max-width: 150px;
+      border-radius: 8px;
+    }
 
-        .row2 .box button:hover {
-            background-color: #c0392b;
-        }
+    .item-details {
+      text-align: left;
+      flex: 1;
+      margin-left: 20px;
+    }
 
-        /* Modal Styling */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-            padding-top: 60px;
-        }
+    .item-details h4 {
+      font-size: 22px;
+      color: #333;
+    }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 800px;
-        }
+    .item-details p {
+      font-size: 16px;
+      color: #777;
+      margin-bottom: 10px;
+    }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
+    .item-details span {
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+    }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .item-details button {
+      padding: 10px 15px;
+      background-color: #f5a623;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
 
-        .footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-        }
+    .item-details button:hover {
+      background-color: #e49e1d;
+      transform: scale(1.05);
+    }
 
-        .footer p {
-            font-size: 0.9rem;
-        }
+    /* Testimonials Section */
+    .testimonials {
+      background-color: #f5f5f5;
+      padding: 50px 20px;
+      text-align: center;
+    }
 
-        .footer a {
-            color: #e74c3c;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
+    .testimonials h3 {
+      font-size: 30px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .testimonial {
+      margin: 20px 0;
+      font-size: 18px;
+      color: #777;
+    }
+
+    .testimonial cite {
+      display: block;
+      margin-top: 10px;
+      font-size: 16px;
+      font-style: normal;
+      color: #f5a623;
+    }
+
+    /* Night Mode Toggle */
+    .night-mode-toggle {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .night-mode-toggle:hover {
+      background-color: #555;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu-item img {
+        max-width: 120px;
+      }
+
+      .item-details {
+        margin-left: 0;
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      header .logo h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="header">
-        <h1>Le Cafe</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="assets/image/logo.jpeg" alt="LeCafe Logo" class="logo-img" />
+      <h1>LeCafe</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order Online</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="cart">
+      <a href="cart.html">
+        <span class="cart-badge" id="cart-count">0</span>
+        🛒
+      </a>
+    </div>
+  </header>
+
+  <!-- Menu Section -->
+  <section class="menu">
+    <h2>Our Menu</h2>
+
+    <!-- Coffee & Beverages -->
+    <div class="menu-category">
+      <h3>Coffee & Beverages</h3>
+
+      <div class="menu-item">
+        <img src="assets/image/Espresso Shot.jpg" alt="Espresso" />
+        <div class="item-details">
+          <h4>Espresso</h4>
+          <p>Rich, dark coffee made with premium beans.</p>
+          <span>$2.50</span>
+          <button class="add-to-cart" data-name="Espresso" data-price="2.50">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="assets/image/latte.jpg" alt="Latte" />
+        <div class="item-details">
+          <h4>Latte</h4>
+          <p>Smooth espresso with steamed milk.</p>
+          <span>$4.00</span>
+          <button class="add-to-cart" data-name="Latte" data-price="4.00">Add to Cart</button>
+        </div>
+      </div>
     </div>
 
-    <!-- Filter Section -->
-    <div class="filter">
-        <button onclick="filterMenu('all')">All</button>
-        <button onclick="filterMenu('drinks')">Drinks</button>
-        <button onclick="filterMenu('desserts')">Desserts</button>
-        <button onclick="filterMenu('snacks')">Snacks</button>
+    <!-- Snacks & Pastries -->
+    <div class="menu-category">
+      <h3>Snacks & Pastries</h3>
+
+      <div class="menu-item">
+        <img src="assets/image/Butter Croissant.jpg" alt="Croissant" />
+        <div class="item-details">
+          <h4>Butter Croissant</h4>
+          <p>Flaky, buttery, and freshly baked.</p>
+          <span>$3.00</span>
+          <button class="add-to-cart" data-name="Butter Croissant" data-price="3.00">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="assets/image/Blueberry Muffin.jpg" alt="Muffin" />
+        <div class="item-details">
+          <h4>Blueberry Muffin</h4>
+          <p>Sweet, moist muffin filled with blueberries.</p>
+          <span>$2.80</span>
+          <button class="add-to-cart" data-name="Blueberry Muffin" data-price="2.80">Add to Cart</button>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Menu Section -->
-    <div class="row2" id="menu">
-        <div class="box drinks">
-            <img src="assets/image/latte.jpg" alt="Latte">
-            <h3>Latte Art</h3>
-            <h4>A perfect blend of espresso and steamed milk.</h4>
-            <button onclick="openModal('latte')">View Details</button>
-        </div>
-
-        <div class="box desserts">
-            <img src="assets/image/Blueberry Muffin.jpg" alt="Blueberry Muffin">
-            <h3>Blueberry Muffin</h3>
-            <h4>Freshly baked with juicy blueberries.</h4>
-            <button onclick="openModal('blueberry')">View Details</button>
-        </div>
-
-        <div class="box snacks">
-            <img src="assets/image/caprese-sandwich.jpg" alt="Caprese Sandwich">
-            <h3>Caprese Sandwich</h3>
-            <h4>Delicious mozzarella, tomatoes, and basil.</h4>
-            <button onclick="openModal('caprese')">View Details</button>
-        </div>
-
-        <div class="box drinks">
-            <img src="assets/image/Espresso Shot.jpg" alt="Espresso">
-            <h3>Espresso Shot</h3>
-            <h4>Bold, strong, and rich in flavor.</h4>
-            <button onclick="openModal('espresso')">View Details</button>
-        </div>
-
-        <div class="box desserts">
-            <img src="assets/image/cheesecake.jpg" alt="Cheesecake">
-            <h3>Cheesecake Slice</h3>
-            <h4>Velvety smooth and creamy.</h4>
-            <button onclick="openModal('cheesecake')">View Details</button>
-        </div>
-
-        <div class="box snacks">
-            <img src="assets/image/Butter Croissant.jpg" alt="Croissant">
-            <h3>Butter Croissant</h3>
-            <h4>Flaky and buttery, baked fresh daily.</h4>
-            <button onclick="openModal('croissant')">View Details</button>
-        </div>
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h3>What Our Customers Say</h3>
+    <div class="testimonial">
+      <p>"LeCafe has the best coffee in town! Highly recommend it."</p>
+      <cite>- Jane Doe</cite>
     </div>
-
-    <!-- Modal for Latte Art -->
-    <div id="latte" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('latte')">&times;</span>
-            <h2>Latte Art</h2>
-            <p><b>Description:</b> A perfect blend of espresso and steamed milk, beautifully decorated with intricate patterns of milk foam.</p>
-            <p><b>Price:</b> $4.50</p>
-            <p><b>Available Sizes:</b> Small, Medium, Large</p>
-        </div>
+    <div class="testimonial">
+      <p>"The blueberry muffin is to die for. Great service!"</p>
+      <cite>- John Smith</cite>
     </div>
+  </section>
 
-    <!-- Modal for Blueberry Muffin -->
-    <div id="blueberry" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('blueberry')">&times;</span>
-            <h2>Blueberry Muffin</h2>
-            <p><b>Description:</b> Freshly baked, soft muffin loaded with juicy blueberries, perfect for breakfast or a quick snack.</p>
-            <p><b>Price:</b> $3.00</p>
-        </div>
-    </div>
+  <!-- Night Mode Toggle -->
+  <div style="text-align: center; margin-top: 30px;">
+    <button class="night-mode-toggle" onclick="toggleNightMode()">🌙 Switch to Night Mode</button>
+  </div>
 
-    <!-- Modal for Caprese Sandwich -->
-    <div id="caprese" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('caprese')">&times;</span>
-            <h2>Caprese Sandwich</h2>
-            <p><b>Description:</b> A sandwich filled with fresh mozzarella, tomatoes, basil, and a drizzle of balsamic vinegar on soft Italian bread.</p>
-            <p><b>Price:</b> $5.00</p>
-        </div>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <p>Follow us on social media: <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a></p>
+    <p>&copy; 2024 LeCafe. All rights reserved.</p>
+  </footer>
 
-    <!-- Modal for Espresso Shot -->
-    <div id="espresso" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('espresso')">&times;</span>
-            <h2>Espresso Shot</h2>
-            <p><b>Description:</b> A shot of strong, bold coffee to get your day started. A perfect pick-me-up for coffee lovers.</p>
-            <p><b>Price:</b> $2.00</p>
-        </div>
-    </div>
+  <script>
+    // JavaScript for handling cart functionality
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    <!-- Modal for Cheesecake -->
-    <div id="cheesecake" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('cheesecake')">&times;</span>
-            <h2>Cheesecake Slice</h2>
-            <p><b>Description:</b> A creamy, rich cheesecake topped with a hint of berry compote. A perfect dessert.</p>
-            <p><b>Price:</b> $4.00</p>
-        </div>
-    </div>
+    // Update cart count in the header
+    function updateCartCount() {
+      const cartCount = document.getElementById('cart-count');
+      cartCount.textContent = cart.length;
+    }
 
-    <!-- Modal for Croissant -->
-    <div id="croissant" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('croissant')">&times;</span>
-            <h2>Butter Croissant</h2>
-            <p><b>Description:</b> Flaky and buttery pastry, baked fresh daily, perfect for pairing with coffee or tea.</p>
-            <p><b>Price:</b> $2.50</p>
-        </div>
-    </div>
+    // Handle Add to Cart button click
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+        const name = this.getAttribute('data-name');
+        const price = parseFloat(this.getAttribute('data-price'));
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2024 Le Cafe. All rights reserved.</p>
-        <p>
-            Follow us:
-            <a href="https://www.facebook.com" target="_blank">Facebook</a> |
-            <a href="https://www.instagram.com" target="_blank">Instagram</a> |
-            <a href="https://www.twitter.com" target="_blank">Twitter</a>
-        </p>
-    </div>
+        // Add item to the cart
+        const item = { name, price };
+        cart.push(item);
 
-    <script>
-        function openModal(id) {
-            document.getElementById(id).style.display = 'block';
-        }
+        // Save updated cart to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
 
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
+        // Update the cart count in the header
+        updateCartCount();
+      });
+    });
 
-        function filterMenu(category) {
-            const items = document.querySelectorAll('.box');
-            items.forEach(item => {
-                if (category === 'all' || item.classList.contains(category)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-    </script>
+    // Night Mode toggle
+    function toggleNightMode() {
+      document.body.classList.toggle('night-mode');
+      const button = document.querySelector('.night-mode-toggle');
+      if (document.body.classList.contains('night-mode')) {
+        button.textContent = '🌙 Switch to Light Mode';
+        document.body.style.backgroundColor = '#333';
+        document.body.style.color = '#fafafa';
+      } else {
+        button.textContent = '🌙 Switch to Night Mode';
+        document.body.style.backgroundColor = '#fafafa';
+        document.body.style.color = '#333';
+      }
+    }
+
+    // Call updateCartCount() to show the initial cart count when the page loads
+    updateCartCount();
+  </script>
 </body>
-
 </html>
