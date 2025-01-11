@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LeCafe Menu</title>
-  <meta name="description" content="LeCafe offers premium coffee, beverages, snacks, and pastries. Visit us for the best cafe experience.">
-  <meta name="keywords" content="coffee, cafe, beverages, pastries, snacks, fresh coffee, menu, online cafe">
+  <title>Welcome to LeCafe</title>
+  <meta name="description" content="Explore premium coffee, beverages, snacks, and pastries at LeCafe.">
+  <meta name="keywords" content="coffee, cafe, beverages, pastries, snacks, LeCafe">
   <meta name="author" content="LeCafe">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
+    /* General Styling */
     * {
       margin: 0;
       padding: 0;
@@ -16,19 +17,35 @@
     }
 
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #fafafa;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f9;
       color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: #f67280;
+    }
+
+    /* Header */
     header {
-      background-color: #333;
-      color: white;
-      padding: 20px;
+      background-color: #fff;
+      color: #333;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     header .logo {
@@ -39,199 +56,168 @@
     header .logo img {
       max-width: 50px;
       height: auto;
-      margin-right: 10px;
+      margin-right: 15px;
     }
 
     header .logo h1 {
       font-size: 24px;
+      font-weight: 700;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-    }
-
-    nav ul li {
-      margin-left: 20px;
+      gap: 20px;
     }
 
     nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #f5a623;
-    }
-
-    /* Cart count badge */
-    .cart-badge {
-      position: relative;
-      padding: 3px 8px;
-      background-color: #f5a623;
-      border-radius: 50%;
-      font-size: 14px;
-      color: white;
-      top: -10px;
-      right: -10px;
-    }
-
-    section.menu {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    section.menu h2 {
-      font-size: 36px;
-      margin-bottom: 40px;
+      font-weight: 500;
       color: #333;
-    }
-
-    .menu-category {
-      margin-bottom: 50px;
-    }
-
-    .menu-category h3 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #f5a623;
-    }
-
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: white;
-      margin: 15px 0;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .menu-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .menu-item img {
-      max-width: 150px;
-      border-radius: 8px;
-    }
-
-    .item-details {
-      text-align: left;
-      flex: 1;
-      margin-left: 20px;
-    }
-
-    .item-details h4 {
-      font-size: 22px;
-      color: #333;
-    }
-
-    .item-details p {
-      font-size: 16px;
-      color: #777;
-      margin-bottom: 10px;
-    }
-
-    .item-details span {
-      font-size: 18px;
-      color: #333;
-      font-weight: bold;
-    }
-
-    .item-details button {
-      padding: 10px 15px;
-      background-color: #f5a623;
-      color: white;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .item-details button:hover {
-      background-color: #e49e1d;
-      transform: scale(1.05);
-    }
-
-    /* Testimonials Section */
-    .testimonials {
-      background-color: #f5f5f5;
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .testimonials h3 {
-      font-size: 30px;
-      margin-bottom: 30px;
-      color: #333;
-    }
-
-    .testimonial {
-      margin: 20px 0;
-      font-size: 18px;
-      color: #777;
-    }
-
-    .testimonial cite {
-      display: block;
-      margin-top: 10px;
-      font-size: 16px;
-      font-style: normal;
-      color: #f5a623;
-    }
-
-    /* Night Mode Toggle */
-    .night-mode-toggle {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
+      padding: 10px 20px;
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
 
-    .night-mode-toggle:hover {
-      background-color: #555;
+    nav ul li a:hover {
+      background-color: #f67280;
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/image/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+      text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .hero a {
+      padding: 12px 30px;
+      background-color: #f67280;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .hero a:hover {
+      background-color: #d85767;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Categories Section */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .category {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .category:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .category img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid #f67280;
+    }
+
+    .category h3 {
+      padding: 20px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .category a {
+      color: #f67280;
+      font-weight: bold;
+    }
+
+    .category a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 40px;
+      background-color: #fff;
+      color: #333;
+      border-top: 2px solid #f67280;
+    }
+
+    footer a {
+      color: #f67280;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      .menu-item {
+      header {
+        padding: 15px 20px;
+      }
+
+      nav ul {
         flex-direction: column;
-        align-items: flex-start;
+        gap: 15px;
       }
 
-      .menu-item img {
-        max-width: 120px;
+      .hero h1 {
+        font-size: 36px;
       }
 
-      .item-details {
-        margin-left: 0;
-        margin-top: 15px;
-        text-align: center;
-      }
-
-      header .logo h1 {
-        font-size: 20px;
+      .hero p {
+        font-size: 16px;
       }
     }
   </style>
 </head>
 <body>
-
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src="assets/image/logo.jpeg" alt="LeCafe Logo" class="logo-img" />
+      <img src="assets/image/logo.jpeg" alt="LeCafe Logo" />
       <h1>LeCafe</h1>
     </div>
     <nav>
@@ -242,138 +228,39 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <div class="cart">
-      <a href="cart.html">
-        <span class="cart-badge" id="cart-count">0</span>
-        🛒
-      </a>
-    </div>
   </header>
 
-  <!-- Menu Section -->
-  <section class="menu">
-    <h2>Our Menu</h2>
-
-    <!-- Coffee & Beverages -->
-    <div class="menu-category">
-      <h3>Coffee & Beverages</h3>
-
-      <div class="menu-item">
-        <img src="assets/image/Espresso Shot.jpg" alt="Espresso" />
-        <div class="item-details">
-          <h4>Espresso</h4>
-          <p>Rich, dark coffee made with premium beans.</p>
-          <span>$2.50</span>
-          <button class="add-to-cart" data-name="Espresso" data-price="2.50">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <img src="assets/image/latte.jpg" alt="Latte" />
-        <div class="item-details">
-          <h4>Latte</h4>
-          <p>Smooth espresso with steamed milk.</p>
-          <span>$4.00</span>
-          <button class="add-to-cart" data-name="Latte" data-price="4.00">Add to Cart</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Snacks & Pastries -->
-    <div class="menu-category">
-      <h3>Snacks & Pastries</h3>
-
-      <div class="menu-item">
-        <img src="assets/image/Butter Croissant.jpg" alt="Croissant" />
-        <div class="item-details">
-          <h4>Butter Croissant</h4>
-          <p>Flaky, buttery, and freshly baked.</p>
-          <span>$3.00</span>
-          <button class="add-to-cart" data-name="Butter Croissant" data-price="3.00">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <img src="assets/image/Blueberry Muffin.jpg" alt="Muffin" />
-        <div class="item-details">
-          <h4>Blueberry Muffin</h4>
-          <p>Sweet, moist muffin filled with blueberries.</p>
-          <span>$2.80</span>
-          <button class="add-to-cart" data-name="Blueberry Muffin" data-price="2.80">Add to Cart</button>
-        </div>
-      </div>
-    </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to LeCafe</h1>
+    <p>Discover the finest coffee and treats, crafted to perfection. Step into LeCafe and experience the magic.</p>
+    <a href="menu.html">Explore Our Menu</a>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <h3>What Our Customers Say</h3>
-    <div class="testimonial">
-      <p>"LeCafe has the best coffee in town! Highly recommend it."</p>
-      <cite>- Jane Doe</cite>
+  <!-- Categories Section -->
+  <section class="categories">
+    <div class="category">
+      <img src="assets/image/drinks.jpeg" alt="Drinks">
+      <h3><a href="menu.html#drinks">Drinks</a></h3>
     </div>
-    <div class="testimonial">
-      <p>"The blueberry muffin is to die for. Great service!"</p>
-      <cite>- John Smith</cite>
+    <div class="category">
+      <img src="assets/image/pastries.jpg" alt="Pastries">
+      <h3><a href="menu.html#pastries">Pastries</a></h3>
+    </div>
+    <div class="category">
+      <img src="assets/image/snacks.jpeg" alt="Snacks">
+      <h3><a href="menu.html#snacks">Snacks</a></h3>
+    </div>
+    <div class="category">
+      <img src="assets/image/Special Menu.png" alt="Specials">
+      <h3><a href="menu.html#specials">Specials</a></h3>
     </div>
   </section>
-
-  <!-- Night Mode Toggle -->
-  <div style="text-align: center; margin-top: 30px;">
-    <button class="night-mode-toggle" onclick="toggleNightMode()">🌙 Switch to Night Mode</button>
-  </div>
 
   <!-- Footer -->
   <footer>
-    <p>Follow us on social media: <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a></p>
     <p>&copy; 2024 LeCafe. All rights reserved.</p>
+    <p>Follow us on <a href="#">Facebook</a>, <a href="#">Instagram</a>, and <a href="#">Twitter</a>.</p>
   </footer>
-
-  <script>
-    // JavaScript for handling cart functionality
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Update cart count in the header
-    function updateCartCount() {
-      const cartCount = document.getElementById('cart-count');
-      cartCount.textContent = cart.length;
-    }
-
-    // Handle Add to Cart button click
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-      button.addEventListener('click', function() {
-        const name = this.getAttribute('data-name');
-        const price = parseFloat(this.getAttribute('data-price'));
-
-        // Add item to the cart
-        const item = { name, price };
-        cart.push(item);
-
-        // Save updated cart to localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        // Update the cart count in the header
-        updateCartCount();
-      });
-    });
-
-    // Night Mode toggle
-    function toggleNightMode() {
-      document.body.classList.toggle('night-mode');
-      const button = document.querySelector('.night-mode-toggle');
-      if (document.body.classList.contains('night-mode')) {
-        button.textContent = '🌙 Switch to Light Mode';
-        document.body.style.backgroundColor = '#333';
-        document.body.style.color = '#fafafa';
-      } else {
-        button.textContent = '🌙 Switch to Night Mode';
-        document.body.style.backgroundColor = '#fafafa';
-        document.body.style.color = '#333';
-      }
-    }
-
-    // Call updateCartCount() to show the initial cart count when the page loads
-    updateCartCount();
-  </script>
 </body>
 </html>
