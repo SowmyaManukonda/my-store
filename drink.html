@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LeCafe - Menu</title>
+  <title>LeCafe - Drinks Menu</title>
   <link rel="stylesheet" href="assets/css/styles.css">
   <style>
     /* General Reset */
@@ -85,35 +85,8 @@
       margin-bottom: 30px;
     }
 
-    /* Category Filters */
-    .category-filter {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .category-filter button {
-      background-color: #ff7f50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 18px;
-      margin: 0 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .category-filter button:hover {
-      background-color: #e06f3a;
-    }
-
-    /* Menu Category */
     .menu-category {
-      display: none;
       margin-bottom: 40px;
-    }
-
-    .menu-category.active {
-      display: block;
     }
 
     .menu-category h3 {
@@ -242,17 +215,10 @@
 
   <!-- Menu Section -->
   <section class="menu">
-    <h2>Our Menu</h2>
-
-    <!-- Category Filter Buttons -->
-    <div class="category-filter">
-      <button onclick="filterMenu('coffee')">Coffee & Beverages</button>
-      <button onclick="filterMenu('snacks')">Snacks & Pastries</button>
-      <button onclick="filterMenu('all')">Show All</button>
-    </div>
+    <h2>Our Drinks Menu</h2>
 
     <!-- Coffee & Beverages -->
-    <div class="menu-category coffee">
+    <div class="menu-category">
       <h3>Coffee & Beverages</h3>
       <div class="menu-item" data-name="Espresso" data-price="2.50">
         <img src="assets/image/Espresso Shot.jpg" alt="Espresso" />
@@ -272,26 +238,80 @@
           <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
-    </div>
-
-    <!-- Snacks & Pastries -->
-    <div class="menu-category snacks">
-      <h3>Snacks & Pastries</h3>
-      <div class="menu-item" data-name="Butter Croissant" data-price="3.00">
-        <img src="assets/image/Butter Croissant.jpg" alt="Croissant" />
+      <div class="menu-item" data-name="Cappuccino" data-price="4.50">
+        <img src="assets/image/cappuccino.jpg" alt="Cappuccino" />
         <div class="item-details">
-          <h4>Butter Croissant</h4>
-          <p>Flaky, buttery, and freshly baked.</p>
+          <h4>Cappuccino</h4>
+          <p>Espresso topped with velvety steamed milk foam.</p>
+          <span>$4.50</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Americano" data-price="3.00">
+        <img src="assets/image/americano.jpg" alt="Americano" />
+        <div class="item-details">
+          <h4>Americano</h4>
+          <p>Strong espresso diluted with hot water.</p>
           <span>$3.00</span>
           <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
-      <div class="menu-item" data-name="Blueberry Muffin" data-price="2.80">
-        <img src="assets/image/Blueberry Muffin.jpg" alt="Muffin" />
+    </div>
+
+    <!-- Soft Drinks -->
+    <div class="menu-category">
+      <h3>Soft Drinks & Juices</h3>
+      <div class="menu-item" data-name="Coca Cola" data-price="2.00">
+        <img src="assets/image/coca-cola.jpg" alt="Coca Cola" />
         <div class="item-details">
-          <h4>Blueberry Muffin</h4>
-          <p>Sweet, moist muffin filled with blueberries.</p>
-          <span>$2.80</span>
+          <h4>Coca Cola</h4>
+          <p>Classic refreshing soft drink.</p>
+          <span>$2.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Sprite" data-price="2.00">
+        <img src="assets/image/sprite.jpg" alt="Sprite" />
+        <div class="item-details">
+          <h4>Sprite</h4>
+          <p>Refreshing lemon-lime soda.</p>
+          <span>$2.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Fanta" data-price="2.00">
+        <img src="assets/image/fanta.jpg" alt="Fanta" />
+        <div class="item-details">
+          <h4>Fanta</h4>
+          <p>Fruit-flavored soda with a burst of flavor.</p>
+          <span>$2.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Orange Juice" data-price="2.50">
+        <img src="assets/image/orange-juice.jpg" alt="Orange Juice" />
+        <div class="item-details">
+          <h4>Orange Juice</h4>
+          <p>Freshly squeezed orange juice.</p>
+          <span>$2.50</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Lemonade" data-price="2.50">
+        <img src="assets/image/lemonade.jpg" alt="Lemonade" />
+        <div class="item-details">
+          <h4>Lemonade</h4>
+          <p>Freshly made with real lemons.</p>
+          <span>$2.50</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Iced Tea" data-price="3.00">
+        <img src="assets/image/iced-tea.jpg" alt="Iced Tea" />
+        <div class="item-details">
+          <h4>Iced Tea</h4>
+          <p>Chilled tea served with lemon slices.</p>
+          <span>$3.00</span>
           <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
@@ -309,51 +329,23 @@
     // Cart functionality
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     const cartCountElement = document.getElementById('cart-count');
-    
+
+    // Load cart from localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    function addToCart(item) {
-      const existingItem = cart.find(cartItem => cartItem.name === item.name);
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({ ...item, quantity: 1 });
-      }
+    cartCountElement.textContent = cart.length;
 
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCartCount();
-    }
-
-    function updateCartCount() {
-      const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-      cartCountElement.textContent = totalItems;
-    }
-
+    // Add to Cart
     addToCartButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const itemElement = button.closest('.menu-item');
-        const item = {
-          name: itemElement.getAttribute('data-name'),
-          price: parseFloat(itemElement.getAttribute('data-price')),
-        };
-        addToCart(item);
-        alert(`${item.name} added to cart!`);
+      button.addEventListener('click', (event) => {
+        const menuItem = event.target.closest('.menu-item');
+        const name = menuItem.getAttribute('data-name');
+        const price = parseFloat(menuItem.getAttribute('data-price'));
+
+        cart.push({ name, price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        cartCountElement.textContent = cart.length;
       });
     });
-
-    updateCartCount();
-
-    // Filter Menu by Category
-    function filterMenu(category) {
-      const allCategories = document.querySelectorAll('.menu-category');
-      allCategories.forEach(categoryElement => {
-        if (category === 'all' || categoryElement.classList.contains(category)) {
-          categoryElement.classList.add('active');
-        } else {
-          categoryElement.classList.remove('active');
-        }
-      });
-    }
   </script>
 
 </body>

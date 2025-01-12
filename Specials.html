@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specials - LeCafe</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #6b4f4f;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 28px;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    header nav ul li {
+      margin-left: 20px;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    header nav ul li a:hover {
+      color: #f4d19e;
+    }
+
+    .menu-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .menu-category h2 {
+      text-align: center;
+      font-size: 36px;
+      color: #6b4f4f;
+      margin-bottom: 30px;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-item img {
+      max-width: 100px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+
+    .item-details {
+      flex: 1;
+      text-align: left;
+    }
+
+    .item-details h4 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .item-details p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .item-details span {
+      font-size: 18px;
+      font-weight: bold;
+      color: #6b4f4f;
+    }
+
+    .add-to-cart {
+      background-color: #ff7f50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+      background-color: #e06f3a;
+    }
+
+    footer {
+      background-color: #6b4f4f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #f4d19e;
+      text-decoration: none;
+      margin: 0 5px;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>LeCafe</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order Online</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Specials Menu -->
+  <div class="menu-container">
+    
+    <!-- Specials Category -->
+    <div class="menu-category">
+      <h2>Specials</h2>
+
+      <!-- Special Items -->
+      <div class="menu-item" data-name="Truffle Mac & Cheese" data-price="8.00">
+        <img src="assets/image/truffle_mac_cheese.jpg" alt="Truffle Mac & Cheese" />
+        <div class="item-details">
+          <h4>Truffle Mac & Cheese</h4>
+          <p>A creamy mac & cheese with a luxurious truffle twist.</p>
+          <span>$8.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Lobster Roll" data-price="12.50">
+        <img src="assets/image/lobster_roll.jpg" alt="Lobster Roll" />
+        <div class="item-details">
+          <h4>Lobster Roll</h4>
+          <p>Fresh lobster in a buttery toasted roll, served with lemon.</p>
+          <span>$12.50</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Stuffed Mushrooms" data-price="7.00">
+        <img src="assets/image/stuffed_mushrooms.jpg" alt="Stuffed Mushrooms" />
+        <div class="item-details">
+          <h4>Stuffed Mushrooms</h4>
+          <p>Grilled mushrooms stuffed with garlic, cheese, and herbs.</p>
+          <span>$7.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Peking Duck" data-price="15.00">
+        <img src="assets/image/peking_duck.jpg" alt="Peking Duck" />
+        <div class="item-details">
+          <h4>Peking Duck</h4>
+          <p>Delicately roasted duck with crispy skin, served with pancakes.</p>
+          <span>$15.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 LeCafe. All rights reserved.</p>
+    <p>Follow us on <a href="#">Facebook</a>, <a href="#">Instagram</a>, and <a href="#">Twitter</a>.</p>
+  </footer>
+
+  <script>
+    // Cart functionality
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    function addToCart(item) {
+      const existingItem = cart.find(cartItem => cartItem.name === item.name);
+      if (existingItem) {
+        existingItem.quantity += 1;  
+      } else {
+        cart.push({ ...item, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const itemElement = button.closest('.menu-item');
+        const item = {
+          name: itemElement.getAttribute('data-name'),
+          price: parseFloat(itemElement.getAttribute('data-price'))
+        };
+        addToCart(item);
+        alert(`${item.name} added to cart!`);
+      });
+    });
+  </script>
+
+</body>
+</html>

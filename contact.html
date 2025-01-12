@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - LeCafe</title>
   <style>
+    /* General Reset */
     * {
       margin: 0;
       padding: 0;
@@ -13,22 +14,24 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to right, #f8d7da, #fff); /* Subtle gradient background */
+      background: linear-gradient(to right, #f4e1d2, #f7f7f7);
       color: #333;
     }
 
+    /* Header Styling */
     header {
-      background-color: #333;
-      color: white;
-      padding: 20px;
+      background-color: #6b4f4f;
+      color: #fff;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     header .logo h1 {
-      font-size: 24px;
+      font-size: 28px;
+      font-weight: bold;
     }
 
     nav ul {
@@ -44,153 +47,138 @@
       color: white;
       text-decoration: none;
       font-size: 18px;
+      transition: color 0.3s ease;
     }
 
+    nav ul li a:hover {
+      color: #f4d19e;
+    }
+
+    /* Contact Section */
     section.contact {
-      padding: 50px;
-      background-color: white;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      max-width: 900px;
-      margin: 50px auto;
+      text-align: center;
     }
 
     section.contact h2 {
-      text-align: center;
-      font-size: 36px;
+      font-size: 32px;
+      color: #6b4f4f;
       margin-bottom: 20px;
-      color: #333;
-    }
-
-    .contact-info {
-      margin-bottom: 40px;
     }
 
     .contact-info ul {
       list-style: none;
-      font-size: 16px;
+      margin: 20px 0;
+      text-align: left;
     }
 
     .contact-info li {
       margin-bottom: 15px;
+      font-size: 16px;
       display: flex;
       align-items: center;
     }
 
     .contact-info li i {
+      color: #6b4f4f;
       margin-right: 10px;
       font-size: 20px;
-      color: #333;
     }
 
+    /* Form Styling */
     form {
-      max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
+      margin-top: 20px;
+      text-align: left;
     }
 
     form label {
-      font-size: 18px;
-      margin-bottom: 5px;
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      font-size: 16px;
       color: #555;
     }
 
     form input, form select, form textarea {
+      width: 100%;
       padding: 12px;
-      font-size: 16px;
       margin-bottom: 15px;
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
       border-radius: 5px;
+      font-size: 16px;
       transition: border-color 0.3s ease;
     }
 
-    form input:focus, form select:focus, form textarea:focus {
-      border-color: #007bff;
+    form input:focus, form textarea:focus {
+      border-color: #6b4f4f;
+      outline: none;
     }
 
     form button {
-      padding: 12px 20px;
-      background-color: #333;
-      color: white;
+      width: 100%;
+      padding: 12px;
+      background-color: #6b4f4f;
+      color: #fff;
       border: none;
       font-size: 18px;
-      cursor: pointer;
       border-radius: 5px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     form button:hover {
-      background-color: #555;
+      background-color: #8a6353;
     }
 
+    /* Footer */
     footer {
-      background-color: #333;
+      background-color: #6b4f4f;
       color: white;
       text-align: center;
       padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
+      margin-top: 40px;
     }
 
     footer a {
-      color: white;
+      color: #f4d19e;
       text-decoration: none;
       margin: 0 5px;
+      transition: color 0.3s ease;
     }
 
-    /* Responsive design */
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
+      section.contact {
+        margin: 20px;
+        padding: 20px;
+      }
+
       header .logo h1 {
-        font-size: 20px;
+        font-size: 24px;
       }
 
       nav ul {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
       }
 
       nav ul li {
         margin: 10px 0;
       }
-
-      section.contact {
-        padding: 30px;
-        margin: 20px;
-      }
-
-      form {
-        max-width: 100%;
-      }
     }
-
-    /* Thank You Modal */
-    #thank-you-modal {
-      display: none;
-      background-color: rgba(0, 0, 0, 0.5);
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #thank-you-modal div {
-      background-color: white;
-      padding: 30px;
-      border-radius: 5px;
-      text-align: center;
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="logo">
       <h1>LeCafe</h1>
@@ -205,92 +193,37 @@
     </nav>
   </header>
 
-  <!-- Contact Section -->
   <section class="contact">
     <h2>Contact Us</h2>
+    <p>We'd love to hear from you! Reach out for inquiries, feedback, or support.</p>
 
     <div class="contact-info">
-      <p>If you have any questions, feel free to reach out to us:</p>
       <ul>
-        <li><i class="fas fa-envelope"></i><strong>Email:</strong> info@lecafe.com</li>
-        <li><i class="fas fa-phone-alt"></i><strong>Phone:</strong> +1 (555) 123-4567</li>
-        <li><i class="fas fa-map-marker-alt"></i><strong>Address:</strong> 123 Coffee St, Cityville, ABC 12345</li>
-        <li><i class="fas fa-share-alt"></i><strong>Social Media:</strong> <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a></li>
+        <li><i class="fas fa-envelope"></i>Email: info@lecafe.com</li>
+        <li><i class="fas fa-phone"></i>Phone: +1 (555) 123-4567</li>
+        <li><i class="fas fa-map-marker-alt"></i>Address: 123 Coffee St, Cityville</li>
       </ul>
     </div>
 
-    <!-- Contact Form -->
-    <form action="#" method="post" onsubmit="handleSubmit(event)">
+    <form>
       <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" placeholder="Enter your full name" required>
 
       <label for="email">Your Email:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="inquiry-type">Type of Inquiry:</label>
-      <select id="inquiry-type" name="inquiry-type">
-        <option value="general">General Inquiry</option>
-        <option value="order-issue">Order Issue</option>
-        <option value="feedback">Feedback</option>
-      </select>
+      <input type="email" id="email" placeholder="Enter your email" required>
 
       <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-
-      <label for="attachment">Attach a file (Optional):</label>
-      <input type="file" id="attachment" name="attachment">
+      <textarea id="message" rows="4" placeholder="Write your message here..." required></textarea>
 
       <button type="submit">Send Message</button>
     </form>
-
-    <!-- Location Map -->
-    <h3>Our Location</h3>
-    <iframe src="https://www.google.com/maps/embed?pb=YOUR_GOOGLE_MAP_EMBED_LINK" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </section>
 
-  <!-- Thank You Modal -->
-  <div id="thank-you-modal">
-    <div>
-      <h2>Thank You!</h2>
-      <p>Your message has been sent successfully. We'll get back to you shortly.</p>
-      <button onclick="document.getElementById('thank-you-modal').style.display='none'">Close</button>
-    </div>
-  </div>
-
-  <!-- Newsletter Signup -->
-  <section class="newsletter">
-    <h3>Join Our Newsletter</h3>
-    <form action="/newsletter-signup" method="post">
-      <label for="newsletter-email">Enter your email:</label>
-      <input type="email" id="newsletter-email" name="newsletter-email" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2024 LeCafe. All rights reserved.</p>
+    <p>&copy; 2024 LeCafe. All Rights Reserved.</p>
   </footer>
 
-  <!-- FontAwesome Icons (for icons in contact information) -->
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-  <!-- Google Analytics (example for tracking form submission) -->
-  <script>
-    function handleSubmit(event) {
-      event.preventDefault(); // Prevent form from submitting for demo purposes
-      // Show Thank You Modal
-      document.getElementById('thank-you-modal').style.display = 'flex';
-      // Send form data to the server (backend logic not shown)
-      console.log("Form submitted!");
-
-      // Google Analytics Event (Example)
-      gtag('event', 'contact_form_submission', {
-        'event_category': 'Contact',
-        'event_label': 'Contact Us Page'
-      });
-    }
-  </script>
 
 </body>
 </html>

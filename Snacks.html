@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snacks & Burgers - LeCafe</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #6b4f4f;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 28px;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    header nav ul li {
+      margin-left: 20px;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    header nav ul li a:hover {
+      color: #f4d19e;
+    }
+
+    .menu-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .menu-category h2 {
+      text-align: center;
+      font-size: 36px;
+      color: #6b4f4f;
+      margin-bottom: 30px;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-item img {
+      max-width: 100px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+
+    .item-details {
+      flex: 1;
+      text-align: left;
+    }
+
+    .item-details h4 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .item-details p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .item-details span {
+      font-size: 18px;
+      font-weight: bold;
+      color: #6b4f4f;
+    }
+
+    .add-to-cart {
+      background-color: #ff7f50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+      background-color: #e06f3a;
+    }
+
+    footer {
+      background-color: #6b4f4f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #f4d19e;
+      text-decoration: none;
+      margin: 0 5px;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>LeCafe</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="order.html">Order Online</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Snacks & Burgers Menu -->
+  <div class="menu-container">
+    
+    <!-- Snacks Category -->
+    <div class="menu-category">
+      <h2>Snacks</h2>
+
+      <!-- Snack Items -->
+      <div class="menu-item" data-name="French Fries" data-price="2.50">
+        <img src="assets/image/french_fries.jpg" alt="French Fries" />
+        <div class="item-details">
+          <h4>French Fries</h4>
+          <p>Crispy golden fries served with ketchup.</p>
+          <span>$2.50</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Cheese Sticks" data-price="3.00">
+        <img src="assets/image/cheese_sticks.jpg" alt="Cheese Sticks" />
+        <div class="item-details">
+          <h4>Cheese Sticks</h4>
+          <p>Golden fried cheese sticks served with marinara sauce.</p>
+          <span>$3.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Garlic Bread" data-price="2.80">
+        <img src="assets/image/garlic_bread.jpg" alt="Garlic Bread" />
+        <div class="item-details">
+          <h4>Garlic Bread</h4>
+          <p>Warm bread topped with buttery garlic and herbs.</p>
+          <span>$2.80</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Burgers Category -->
+    <div class="menu-category">
+      <h2>Burgers</h2>
+
+      <!-- Burger Items -->
+      <div class="menu-item" data-name="Classic Burger" data-price="5.50">
+        <img src="assets/image/classic_burger.jpg" alt="Classic Burger" />
+        <div class="item-details">
+          <h4>Classic Burger</h4>
+          <p>A juicy beef patty with lettuce, tomato, and cheese.</p>
+          <span>$5.50</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Cheeseburger" data-price="6.00">
+        <img src="assets/image/cheeseburger.jpg" alt="Cheeseburger" />
+        <div class="item-details">
+          <h4>Cheeseburger</h4>
+          <p>A classic beef burger with melted cheddar cheese.</p>
+          <span>$6.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Chicken Burger" data-price="6.50">
+        <img src="assets/image/chicken_burger.jpg" alt="Chicken Burger" />
+        <div class="item-details">
+          <h4>Chicken Burger</h4>
+          <p>A grilled chicken patty with lettuce, tomato, and mayo.</p>
+          <span>$6.50</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item" data-name="Veggie Burger" data-price="5.00">
+        <img src="assets/image/veggie_burger.jpg" alt="Veggie Burger" />
+        <div class="item-details">
+          <h4>Veggie Burger</h4>
+          <p>A flavorful veggie patty with fresh veggies and sauce.</p>
+          <span>$5.00</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 LeCafe. All rights reserved.</p>
+    <p>Follow us on <a href="#">Facebook</a>, <a href="#">Instagram</a>, and <a href="#">Twitter</a>.</p>
+  </footer>
+
+  <script>
+    // Cart functionality
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    function addToCart(item) {
+      const existingItem = cart.find(cartItem => cartItem.name === item.name);
+      if (existingItem) {
+        existingItem.quantity += 1;  
+      } else {
+        cart.push({ ...item, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const itemElement = button.closest('.menu-item');
+        const item = {
+          name: itemElement.getAttribute('data-name'),
+          price: parseFloat(itemElement.getAttribute('data-price'))
+        };
+        addToCart(item);
+        alert(`${item.name} added to cart!`);
+      });
+    });
+  </script>
+
+</body>
+</html>

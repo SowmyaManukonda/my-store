@@ -7,7 +7,7 @@
   <meta name="description" content="Explore premium coffee, beverages, snacks, and pastries at LeCafe.">
   <meta name="keywords" content="coffee, cafe, beverages, pastries, snacks, LeCafe">
   <meta name="author" content="LeCafe">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* General Styling */
     * {
@@ -18,7 +18,7 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f9;
+      background-color: #f7f7fa;
       color: #333;
       line-height: 1.6;
       overflow-x: hidden;
@@ -38,7 +38,7 @@
     header {
       background-color: #fff;
       color: #333;
-      padding: 20px 40px;
+      padding: 15px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -61,7 +61,7 @@
 
     header .logo h1 {
       font-size: 24px;
-      font-weight: 700;
+      font-family: 'Playfair Display', serif;
     }
 
     nav ul {
@@ -85,7 +85,7 @@
 
     /* Hero Section */
     .hero {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/image/hero.jpg');
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('assets/image/hero.jpg');
       background-size: cover;
       background-position: center;
       height: 80vh;
@@ -102,6 +102,7 @@
       font-size: 50px;
       margin-bottom: 20px;
       text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.7);
+      font-family: 'Playfair Display', serif;
     }
 
     .hero p {
@@ -146,8 +147,8 @@
     }
 
     .category:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
     }
 
     .category img {
@@ -192,6 +193,24 @@
       text-decoration: underline;
     }
 
+    /* Cart Badge */
+    .cart-icon {
+      position: relative;
+      font-size: 20px;
+      color: #f67280;
+    }
+
+    .cart-icon .cart-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: #f67280;
+      color: white;
+      border-radius: 50%;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       header {
@@ -228,6 +247,11 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <div class="cart-icon">
+      <a href="cart.html">
+        🛒 <span class="cart-badge" id="cart-count">0</span>
+      </a>
+    </div>
   </header>
 
   <!-- Hero Section -->
@@ -241,19 +265,19 @@
   <section class="categories">
     <div class="category">
       <img src="assets/image/drinks.jpeg" alt="Drinks">
-      <h3><a href="menu.html#drinks">Drinks</a></h3>
+      <h3><a href="drink.html">Drinks</a></h3>
     </div>
     <div class="category">
       <img src="assets/image/pastries.jpg" alt="Pastries">
-      <h3><a href="menu.html#pastries">Pastries</a></h3>
+      <h3><a href="pastries.html">Pastries</a></h3>
     </div>
     <div class="category">
       <img src="assets/image/snacks.jpeg" alt="Snacks">
-      <h3><a href="menu.html#snacks">Snacks</a></h3>
+      <h3><a href="Snacks.html">Snacks</a></h3>
     </div>
     <div class="category">
       <img src="assets/image/Special Menu.png" alt="Specials">
-      <h3><a href="menu.html#specials">Specials</a></h3>
+      <h3><a href="Specials.html">Specials</a></h3>
     </div>
   </section>
 
@@ -262,5 +286,22 @@
     <p>&copy; 2024 LeCafe. All rights reserved.</p>
     <p>Follow us on <a href="#">Facebook</a>, <a href="#">Instagram</a>, and <a href="#">Twitter</a>.</p>
   </footer>
+
+  <script>
+    // Cart functionality
+    const cartCountElement = document.getElementById('cart-count');
+
+    // Get the cart from localStorage (or initialize an empty array if not present)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Update the cart count on page load
+    function updateCartCount() {
+      const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+      cartCountElement.textContent = totalItems;
+    }
+
+    // Call the function to update the cart count on page load
+    updateCartCount();
+  </script>
 </body>
 </html>
