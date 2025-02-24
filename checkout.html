@@ -240,15 +240,23 @@
     const totalPriceElement = document.getElementById('total-price');
 
     function displayOrderSummary() {
+      console.log('Cart:', cart); // Debugging statement
+
       if (cart.length === 0) {
         orderItemsContainer.innerHTML = '<p>Your cart is empty. Please add items to your cart before proceeding.</p>';
       } else {
         orderItemsContainer.innerHTML = cart.map(item => `
-          <li>${item.name} - ₹${item.price.toFixed(2)}</li>
+          <li>${item.name} - ₹${parseFloat(item.price).toFixed(2)}</li>
         `).join('');
       }
 
-      const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+      let totalPrice = 0;
+      cart.forEach(item => {
+        const itemPrice = parseFloat(item.price);
+        console.log(`Item: ${item.name}, Price: ₹${itemPrice.toFixed(2)}`); // Debugging statement
+        totalPrice += itemPrice;
+      });
+      console.log('Total price:', totalPrice); // Debugging statement
       totalPriceElement.textContent = totalPrice.toFixed(2);
     }
 
@@ -285,7 +293,7 @@
       }
 
       if (isValid) {
-        alert(`Order Confirmed!\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nPayment Method: ${paymentMethod}\nTotal: $${totalPriceElement.textContent}`);
+        alert(`Order Confirmed!\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nPayment Method: ${paymentMethod}\nTotal: ₹${totalPriceElement.textContent}`);
         localStorage.removeItem('cart');
         cart = [];
         displayOrderSummary();
@@ -293,7 +301,6 @@
     });
 
     displayOrderSummary();
-  </script>
-
+</script>
 </body>
 </html>
