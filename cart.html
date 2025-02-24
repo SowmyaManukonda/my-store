@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Cart</title>
+  <title>Your Cart - LeCafe</title>
   <link rel="stylesheet" href="assets/css/styles.css">
   <style>
     body {
       font-family: 'Arial', sans-serif;
       background-color: #fafafa;
       color: #333;
+      margin: 0;
     }
 
     header {
@@ -29,6 +30,7 @@
     nav ul {
       list-style: none;
       display: flex;
+      padding: 0;
     }
 
     nav ul li {
@@ -53,22 +55,33 @@
 
     .cart h2 {
       font-size: 36px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       color: #333;
+    }
+
+    #cart-items {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .cart-item {
       background-color: white;
-      margin: 15px 0;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
     }
 
-    .cart-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    .cart-item h4 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .cart-item p {
+      margin: 5px 0;
     }
 
     .cart-item button {
@@ -79,7 +92,7 @@
       font-size: 16px;
       cursor: pointer;
       border-radius: 5px;
-      transition: background-color 0.3s ease;
+      margin-left: 5px;
     }
 
     .cart-item button:hover {
@@ -87,8 +100,8 @@
     }
 
     .total {
-      margin-top: 30px;
       font-size: 20px;
+      margin-top: 30px;
     }
 
     .total button {
@@ -111,6 +124,7 @@
       font-size: 20px;
       color: #f5a623;
       margin-top: 30px;
+      display: none;
     }
 
     .coupon-section {
@@ -151,37 +165,6 @@
       padding: 20px 10px;
       margin-top: 40px;
     }
-
-    footer p {
-      margin-bottom: 10px;
-    }
-
-    footer a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    footer a:hover {
-      color: #f5a623;
-    }
-
-    @media (max-width: 768px) {
-      .cart-item {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .total button {
-        width: 100%;
-      }
-
-      .coupon-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-    }
   </style>
 </head>
 <body>
@@ -207,7 +190,7 @@
     </div>
 
     <div class="coupon-section">
-      <input type="text" id="coupon-code" placeholder="Enter coupon code" />
+      <input type="text" id="coupon-code" placeholder="Enter coupon code">
       <button id="apply-coupon">Apply</button>
       <p id="coupon-message"></p>
     </div>
@@ -217,7 +200,7 @@
       <button id="checkout-button">Proceed to Checkout</button>
     </div>
 
-    <div class="empty-cart-message" id="empty-cart-message" style="display: none;">
+    <div class="empty-cart-message" id="empty-cart-message">
       Your cart is empty.
     </div>
   </section>
@@ -227,7 +210,6 @@
   </footer>
 
   <script>
-    // Get cart from localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartItemsContainer = document.getElementById('cart-items');
     const totalPriceElement = document.getElementById('total-price');
@@ -238,80 +220,60 @@
     let discount = 0;
     let couponCode = 'DISCOUNT10';
 
-    // Display cart items
     function displayCart() {
       if (cart.length === 0) {
         cartItemsContainer.innerHTML = '';
         emptyCartMessage.style.display = 'block';
+        return;
       } else {
-        cartItemsContainer.innerHTML = cart.map(item => `
-          <div class="cart-item">
-            <h4>${item.name}</h4>
-            <p>₹${(item.price * item.quantity).toFixed(2)}</p>
-            <button class="remove-item" data-name="${item.name}">Remove</button>
-            <button class="increase-quantity" data-name="${item.name}">+</button>
-            <button class="decrease-quantity" data-name="${item.name}">-</button>
-            <p>Quantity: ${item.quantity}</p>
-          </div>
-        `).join('');
         emptyCartMessage.style.display = 'none';
       }
 
-      // Update total price
+      cartItemsContainer.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <h4>${item.name}</h4>
+          <p>₹${(item.price * item.quantity).toFixed(2)}</p>
+          <button class="increase-quantity" data-name="${item.name}">+</button>
+          <button class="decrease-quantity" data-name="${item.name}">-</button>
+          <button class="remove-item" data-name="${item.name}">Remove</button>
+          <p>Quantity: ${item.quantity}</p>
+        </div>
+      `).join('');
+
       const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-      const discountedPrice = totalPrice * (1 - discount);
-      totalPriceElement.textContent = discountedPrice.toFixed(2);
+      totalPriceElement.textContent = (totalPrice * (1 - discount)).toFixed(2);
     }
 
-    // Remove item from cart
     cartItemsContainer.addEventListener('click', function(event) {
       const itemName = event.target.getAttribute('data-name');
+      const item = cart.find(item => item.name === itemName);
 
       if (event.target.classList.contains('remove-item')) {
-        const itemElement = event.target.closest('.cart-item');
-        itemElement.classList.add('removed');
-        setTimeout(() => {
-          cart = cart.filter(item => item.name !== itemName);
-          localStorage.setItem('cart', JSON.stringify(cart));
-          displayCart();
-        }, 200); // Wait for animation
-      }
-
-      if (event.target.classList.contains('increase-quantity')) {
-        const item = cart.find(item => item.name === itemName);
+        cart = cart.filter(i => i.name !== itemName);
+      } else if (event.target.classList.contains('increase-quantity')) {
         item.quantity++;
-        localStorage.setItem('cart', JSON.stringify(cart));
-        displayCart();
+      } else if (event.target.classList.contains('decrease-quantity') && item.quantity > 1) {
+        item.quantity--;
       }
 
-      if (event.target.classList.contains('decrease-quantity')) {
-        const item = cart.find(item => item.name === itemName);
-        if (item.quantity > 1) {
-          item.quantity--;
-          localStorage.setItem('cart', JSON.stringify(cart));
-          displayCart();
-        }
-      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
     });
 
-    // Apply coupon code
     document.getElementById('apply-coupon').addEventListener('click', function() {
-      const enteredCode = couponCodeInput.value.trim();
-      if (enteredCode === couponCode) {
-        discount = 0.10; // 10% discount
+      if (couponCodeInput.value.trim() === couponCode) {
+        discount = 0.10;
         couponMessage.textContent = "Coupon applied!";
-        displayCart();
       } else {
         couponMessage.textContent = "Invalid coupon code.";
       }
+      displayCart();
     });
 
-    // Checkout
     checkoutButton.addEventListener('click', function() {
       window.location.href = "checkout.html";
     });
 
-    // Initial display
     displayCart();
   </script>
 </body>

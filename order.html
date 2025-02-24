@@ -3,26 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Online - LeCafe</title>
+  <title>Checkout - LeCafe</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
   <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #faf3e0, #f2e9e4);
-      color: #333;
+      background-color: #f9f5f0;
+      color: #4b4b4b;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
     }
 
-    /* Header */
     header {
-      background-color: #4b3f72;
+      background-color: #3e2723;
       color: #fff;
-      padding: 20px 30px;
+      padding: 20px 10%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -31,13 +27,14 @@
 
     header .logo h1 {
       font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 1px;
+      margin: 0;
     }
 
     nav ul {
       list-style: none;
       display: flex;
+      margin: 0;
+      padding: 0;
     }
 
     nav ul li {
@@ -47,154 +44,140 @@
     nav ul li a {
       color: #fff;
       text-decoration: none;
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 18px;
       transition: color 0.3s;
     }
 
     nav ul li a:hover {
-      color: #ffd166;
+      color: #ffcc80;
     }
 
-    /* Cart Icon */
-    .cart-icon {
-      position: relative;
-    }
-
-    .cart-icon a {
-      font-size: 24px;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .cart-badge {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background-color: #ffd166;
-      color: #4b3f72;
-      font-size: 14px;
-      padding: 5px 10px;
-      border-radius: 50%;
-      font-weight: bold;
-    }
-
-    /* Order Section */
-    section.order {
-      padding: 40px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      max-width: 800px;
-      margin: 50px auto;
-    }
-
-    section.order h2 {
+    .checkout {
+      padding: 60px 10%;
       text-align: center;
-      font-size: 32px;
-      margin-bottom: 20px;
-      color: #4b3f72;
     }
 
-    form {
+    .checkout h2 {
+      font-size: 40px;
+      color: #3e2723;
+      margin-bottom: 30px;
+    }
+
+    .checkout-form {
       max-width: 600px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+      margin: 30px auto;
+      text-align: left;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    form label {
-      font-size: 16px;
-      color: #555;
-      font-weight: 500;
-    }
-
-    form input, form select {
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #f9f9f9;
-      transition: border-color 0.3s ease;
-    }
-
-    form input:focus, form select:focus {
-      border-color: #4b3f72;
-      outline: none;
-    }
-
-    form button {
-      padding: 12px 20px;
-      background-color: #4b3f72;
-      color: white;
-      font-size: 16px;
+    .checkout-form label {
       font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+      display: block;
+      margin-bottom: 8px;
+      color: #3e2723;
     }
 
-    form button:hover {
-      background-color: #6c4f9d;
+    .checkout-form input, .checkout-form select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+      box-sizing: border-box;
     }
 
-    .message {
-      text-align: center;
-      margin-top: 20px;
+    .checkout-form button {
+      width: 100%;
+      padding: 15px;
+      background-color: #ffcc80;
+      color: #3e2723;
       font-size: 18px;
-      font-weight: 500;
-      color: #6c4f9d;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
 
-    /* Footer */
+    .checkout-form button:hover {
+      background-color: #ffa726;
+    }
+
+    .order-summary {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-summary h3 {
+      font-size: 28px;
+      color: #3e2723;
+      margin-bottom: 20px;
+    }
+
+    .order-summary ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .order-summary li {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .order-summary .total {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #3e2723;
+    }
+
     footer {
-      background-color: #4b3f72;
+      background-color: #3e2723;
       color: #fff;
       text-align: center;
-      padding: 15px;
+      padding: 20px 10%;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 0;
       font-size: 14px;
     }
 
     footer a {
-      color: #ffd166;
+      color: #ffcc80;
       text-decoration: none;
-      font-weight: 500;
     }
 
     footer a:hover {
       text-decoration: underline;
     }
 
-    /* Responsive Design */
+    .error-message {
+      color: #d32f2f;
+      font-size: 14px;
+      margin-top: -15px;
+      margin-bottom: 10px;
+    }
+
     @media (max-width: 768px) {
-      header .logo h1 {
-        font-size: 24px;
-      }
-
-      nav ul {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav ul li {
-        margin: 10px 0;
-      }
-
-      section.order {
-        padding: 30px;
-        margin: 20px;
-      }
-
-      form {
-        width: 100%;
+      .checkout-form, .order-summary {
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+
   <header>
     <div class="logo">
       <h1>LeCafe</h1>
@@ -207,85 +190,118 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <div class="cart-icon">
-      <a href="cart.html">🛒</a>
-      <span class="cart-badge" id="cart-badge">0</span>
-    </div>
   </header>
 
-  <!-- Order Section -->
-  <section class="order">
-    <h2>Order Your Favorites!</h2>
-    <form id="order-form">
-      <label for="item">Choose an Item:</label>
-      <select id="item" name="item" required>
-        <option value="espresso" data-price="2.50">Espresso - $2.50</option>
-        <option value="latte" data-price="4.00">Latte - $4.00</option>
-        <option value="croissant" data-price="3.00">Croissant - $3.00</option>
-        <option value="muffin" data-price="2.80">Blueberry Muffin - $2.80</option>
-      </select>
+  <section class="checkout">
+    <h2>Checkout</h2>
 
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+    <div class="order-summary">
+      <h3>Your Order</h3>
+      <ul id="order-items">
+        <!-- Order items will be dynamically inserted here -->
+      </ul>
+      <p class="total">Total: ₹<span id="total-price">0.00</span></p>
+    </div>
 
-      <label for="address">Delivery Address:</label>
-      <input type="text" id="address" name="address" required placeholder="Enter your delivery address">
+    <div class="checkout-form">
+      <h3>Billing Information</h3>
+      <form id="checkout-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+        <div class="error-message" id="name-error"></div>
 
-      <label for="phone">Phone Number:</label>
-      <input type="text" id="phone" name="phone" required placeholder="Enter your phone number">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+        <div class="error-message" id="email-error"></div>
 
-      <button type="submit">Place Order</button>
-    </form>
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" name="address" required placeholder="Enter your shipping address">
+        <div class="error-message" id="address-error"></div>
 
-    <div class="message" id="order-message"></div>
+        <label for="payment-method">Payment Method</label>
+        <select id="payment-method" name="payment-method" required>
+          <option value="credit-card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="bank-transfer">Bank Transfer</option>
+        </select>
+
+        <button type="submit">Complete Order</button>
+      </form>
+    </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2024 LeCafe. All rights reserved.</p>
+    <p>&copy; 2024 LeCafe. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a></p>
   </footer>
 
   <script>
-    const orderForm = document.getElementById('order-form');
-    const orderMessage = document.getElementById('order-message');
-    const cartBadge = document.getElementById('cart-badge');
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderItemsContainer = document.getElementById('order-items');
+    const totalPriceElement = document.getElementById('total-price');
 
-    function updateCartBadge() {
-      const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-      cartBadge.textContent = totalItems;
-    }
+    function displayOrderSummary() {
+      console.log('Cart:', cart); // Debugging statement
 
-    orderForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const itemSelect = document.getElementById('item');
-      const quantityInput = document.getElementById('quantity');
-      const addressInput = document.getElementById('address');
-      const phoneInput = document.getElementById('phone');
-
-      const itemName = itemSelect.value;
-      const itemPrice = parseFloat(itemSelect.options[itemSelect.selectedIndex].dataset.price);
-      const quantity = parseInt(quantityInput.value);
-      const address = addressInput.value;
-      const phone = phoneInput.value;
-
-      const existingItem = cart.find(item => item.name === itemName);
-      if (existingItem) {
-        existingItem.quantity += quantity;
+      if (cart.length === 0) {
+        orderItemsContainer.innerHTML = '<p>Your cart is empty. Please add items to your cart before proceeding.</p>';
       } else {
-        cart.push({ name: itemName, price: itemPrice, quantity });
+        orderItemsContainer.innerHTML = cart.map(item => 
+          <li>${item.name} - ₹${parseFloat(item.price).toFixed(2)}</li>
+        ).join('');
       }
 
-      localStorage.setItem('cart', JSON.stringify(cart));
+      let totalPrice = 0;
+      cart.forEach(item => {
+        const itemPrice = parseFloat(item.price);
+        console.log(Item: ${item.name}, Price: ₹${itemPrice.toFixed(2)}); // Debugging statement
+        totalPrice += itemPrice;
+      });
+      console.log('Total price:', totalPrice); // Debugging statement
+      totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
 
-      orderMessage.textContent = `Thank you for your order! ${itemName} (x${quantity}) will be delivered to ${address}. We will contact you at ${phone}.`;
-      orderMessage.style.color = '#4b3f72';
+    document.getElementById('checkout-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const errorElements = document.querySelectorAll('.error-message');
+      errorElements.forEach(element => element.textContent = '');
 
-      orderForm.reset();
-      updateCartBadge();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+      const paymentMethod = document.getElementById('payment-method').value;
+
+      let isValid = true;
+
+      if (!name) {
+        document.getElementById('name-error').textContent = 'Full name is required.';
+        isValid = false;
+      }
+
+      if (!email) {
+        document.getElementById('email-error').textContent = 'Email address is required.';
+        isValid = false;
+      }
+
+      if (!address) {
+        document.getElementById('address-error').textContent = 'Shipping address is required.';
+        isValid = false;
+      }
+
+      if (cart.length === 0) {
+        alert('Your cart is empty. Please add items to your cart before proceeding.');
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert(Order Confirmed!\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nPayment Method: ${paymentMethod}\nTotal: ₹${totalPriceElement.textContent});
+        localStorage.removeItem('cart');
+        cart = [];
+        displayOrderSummary();
+      }
     });
 
-    updateCartBadge();
-  </script>
+    displayOrderSummary();
+</script>
 </body>
-</html>
+</html>  price is not changing even if the order is 2 
+

@@ -240,67 +240,26 @@
     const totalPriceElement = document.getElementById('total-price');
 
     function displayOrderSummary() {
-      console.log('Cart:', cart); // Debugging statement
-
       if (cart.length === 0) {
         orderItemsContainer.innerHTML = '<p>Your cart is empty. Please add items to your cart before proceeding.</p>';
-      } else {
-        orderItemsContainer.innerHTML = cart.map(item => `
-          <li>${item.name} - ₹${parseFloat(item.price).toFixed(2)}</li>
-        `).join('');
+        totalPriceElement.textContent = "0.00";
+        return;
       }
 
-      let totalPrice = 0;
-      cart.forEach(item => {
-        const itemPrice = parseFloat(item.price);
-        console.log(`Item: ${item.name}, Price: ₹${itemPrice.toFixed(2)}`); // Debugging statement
-        totalPrice += itemPrice;
-      });
-      console.log('Total price:', totalPrice); // Debugging statement
+      orderItemsContainer.innerHTML = cart.map(item => {
+        const quantity = item.quantity || 1;
+        const itemTotal = (parseFloat(item.price) * quantity).toFixed(2);
+        return `<li>${item.name} (x${quantity}) - ₹${itemTotal}</li>`;
+      }).join('');
+
+      const totalPrice = cart.reduce((sum, item) => sum + (parseFloat(item.price) * (item.quantity || 1)), 0);
       totalPriceElement.textContent = totalPrice.toFixed(2);
     }
 
-    document.getElementById('checkout-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const errorElements = document.querySelectorAll('.error-message');
-      errorElements.forEach(element => element.textContent = '');
-
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const address = document.getElementById('address').value;
-      const paymentMethod = document.getElementById('payment-method').value;
-
-      let isValid = true;
-
-      if (!name) {
-        document.getElementById('name-error').textContent = 'Full name is required.';
-        isValid = false;
-      }
-
-      if (!email) {
-        document.getElementById('email-error').textContent = 'Email address is required.';
-        isValid = false;
-      }
-
-      if (!address) {
-        document.getElementById('address-error').textContent = 'Shipping address is required.';
-        isValid = false;
-      }
-
-      if (cart.length === 0) {
-        alert('Your cart is empty. Please add items to your cart before proceeding.');
-        isValid = false;
-      }
-
-      if (isValid) {
-        alert(`Order Confirmed!\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nPayment Method: ${paymentMethod}\nTotal: ₹${totalPriceElement.textContent}`);
-        localStorage.removeItem('cart');
-        cart = [];
-        displayOrderSummary();
-      }
-    });
-
     displayOrderSummary();
-</script>
+  </script>
+
 </body>
 </html>
+<!--       const orderForm = document.getElementById('order-form');
+ -->
