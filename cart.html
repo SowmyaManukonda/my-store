@@ -213,7 +213,7 @@
     </div>
 
     <div class="total">
-      <p>Total: $<span id="total-price">0.00</span></p>
+      <p>Total: ₹<span id="total-price">0.00</span></p>
       <button id="checkout-button">Proceed to Checkout</button>
     </div>
 
@@ -247,7 +247,7 @@
         cartItemsContainer.innerHTML = cart.map(item => `
           <div class="cart-item">
             <h4>${item.name}</h4>
-            <p>$${(item.price * item.quantity).toFixed(2)}</p>
+            <p>₹${(item.price * item.quantity).toFixed(2)}</p>
             <button class="remove-item" data-name="${item.name}">Remove</button>
             <button class="increase-quantity" data-name="${item.name}">+</button>
             <button class="decrease-quantity" data-name="${item.name}">-</button>

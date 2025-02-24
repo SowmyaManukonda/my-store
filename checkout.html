@@ -200,7 +200,7 @@
       <ul id="order-items">
         <!-- Order items will be dynamically inserted here -->
       </ul>
-      <p class="total">Total: $<span id="total-price">0.00</span></p>
+      <p class="total">Total: ₹<span id="total-price">0.00</span></p>
     </div>
 
     <div class="checkout-form">
@@ -244,7 +244,7 @@
         orderItemsContainer.innerHTML = '<p>Your cart is empty. Please add items to your cart before proceeding.</p>';
       } else {
         orderItemsContainer.innerHTML = cart.map(item => `
-          <li>${item.name} - $${item.price.toFixed(2)}</li>
+          <li>${item.name} - ₹${item.price.toFixed(2)}</li>
         `).join('');
       }
 
